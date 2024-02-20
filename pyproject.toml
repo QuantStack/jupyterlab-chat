@@ -27,6 +27,7 @@ dependencies = [
     "jupyterlab~=4.0",
     "traitlets>=5.0",
     "deepmerge>=1.0",
+    "langchain"
 ]
 dynamic = ["version", "description", "authors", "urls", "keywords"]
 
