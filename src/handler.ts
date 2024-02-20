@@ -2,6 +2,8 @@ import { URLExt } from '@jupyterlab/coreutils';
 
 import { ServerConnection } from '@jupyterlab/services';
 
+const API_NAMESPACE = 'api/chat';
+
 /**
  * Call the API extension
  *
@@ -15,17 +17,13 @@ export async function requestAPI<T>(
 ): Promise<T> {
   // Make request to Jupyter API
   const settings = ServerConnection.makeSettings();
-  const requestUrl = URLExt.join(
-    settings.baseUrl,
-    'jupyterlab-chat', // API Namespace
-    endPoint
-  );
+  const requestUrl = URLExt.join(settings.baseUrl, API_NAMESPACE, endPoint);
 
   let response: Response;
   try {
     response = await ServerConnection.makeRequest(requestUrl, init, settings);
   } catch (error) {
-    throw new ServerConnection.NetworkError(error as any);
+    throw new ServerConnection.NetworkError(error as TypeError);
   }
 
   let data: any = await response.text();
