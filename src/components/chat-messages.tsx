@@ -50,7 +50,8 @@ export function ChatMessageHeader(props: ChatMessageHeaderProps): JSX.Element {
     </Avatar>
   ) : null;
 
-  const name = props.display_name ?? props.name ?? props.username;
+  const name =
+    props.display_name ?? props.name ?? (props.username || 'User undefined');
 
   return (
     <Box
