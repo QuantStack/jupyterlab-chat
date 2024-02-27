@@ -2,12 +2,9 @@ import getpass
 import json
 import time
 import uuid
-from asyncio import AbstractEventLoop
-from dataclasses import asdict
-from typing import TYPE_CHECKING, Dict, List, Optional
+from typing import Dict, List
 
 from jupyter_server.base.handlers import APIHandler as BaseAPIHandler, JupyterHandler
-from jupyter_server.utils import url_path_join
 from langchain.pydantic_v1 import ValidationError
 from tornado import web, websocket
 
@@ -153,11 +150,13 @@ class ChatHandler(JupyterHandler, websocket.WebSocketHandler):
             return
 
         # message broadcast to chat clients
-        chat_message_id = str(uuid.uuid4())
+        if not chat_request.id:
+            chat_request.id = str(uuid.uuid4())
+
         chat_message = ChatMessage(
-            id=chat_message_id,
+            id=chat_request.id,
             time=time.time(),
-            body=chat_request.prompt,
+            body=chat_request.body,
             sender=self.chat_client,
         )
 

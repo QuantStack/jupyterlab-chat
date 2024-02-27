@@ -1,7 +1,6 @@
-import React from 'react';
-import { ReactWidget } from '@jupyterlab/apputils';
-import type { IThemeManager } from '@jupyterlab/apputils';
+import { IThemeManager, ReactWidget } from '@jupyterlab/apputils';
 import { Alert, Box } from '@mui/material';
+import React from 'react';
 
 import { chatIcon } from '../icons';
 import { JlThemeProvider } from '../components/jl-theme-provider';

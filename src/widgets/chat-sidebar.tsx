@@ -1,20 +1,19 @@
+import { IThemeManager, ReactWidget } from '@jupyterlab/apputils';
+import { IRenderMimeRegistry } from '@jupyterlab/rendermime';
 import React from 'react';
-import { ReactWidget } from '@jupyterlab/apputils';
-import type { IThemeManager } from '@jupyterlab/apputils';
 
 import { Chat } from '../components/chat';
+import { WebSocketHandler } from '../handlers/websocket-handler';
 import { chatIcon } from '../icons';
-import { ChatHandler } from '../chat-handler';
-import { IRenderMimeRegistry } from '@jupyterlab/rendermime';
 
 export function buildChatSidebar(
-  chatHandler: ChatHandler,
+  chatHandler: WebSocketHandler,
   themeManager: IThemeManager | null,
   rmRegistry: IRenderMimeRegistry
 ): ReactWidget {
   const ChatWidget = ReactWidget.create(
     <Chat
-      chatHandler={chatHandler}
+      chatModel={chatHandler}
       themeManager={themeManager}
       rmRegistry={rmRegistry}
     />
