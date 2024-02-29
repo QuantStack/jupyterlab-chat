@@ -1,6 +1,10 @@
 # jupyterlab_chat
 
+**CAUTION** This project is abandoned in favor of its counterpart [jupyter-chat](https://github.com/QuantStack/jupyter-chat)
+
 [![Github Actions Status](https://github.com/QuantStack/jupyterlab-chat/workflows/Build/badge.svg)](https://github.com/QuantStack/jupyterlab-chat/actions/workflows/build.yml)[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/QuantStack/jupyterlab-chat/main?urlpath=lab)
+
+
 A chat extension for Jupyterlab
 
 This package is composed of a Python package named `jupyterlab_chat`
